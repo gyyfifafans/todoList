@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'uuid'
+//import uuid from 'uuid'
 
 var styles = {
     'title':{
@@ -29,7 +29,7 @@ class AppForm extends React.Component{
             return
         }
 
-        let id = uuid()
+        let id = 0
         //传回给父组件的原因难道是因为绘制AppList是通过父组件的data填充的
         //平行子组件->父组件->子组件
         this.props.addTodoItem({id,text,complete:false})

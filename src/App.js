@@ -7,7 +7,8 @@ import AppFooter from './components/AppFooter.js'
 class App extends React.Component{
     state = {
         choosevalue:'1',
-        data:this.props.data
+        data:this.props.data,
+        len:3
     }
 
     onChangeCompleteItem(did){
@@ -36,15 +37,18 @@ class App extends React.Component{
             return item
           })
           this.setState({ data: newdata })
+          //this.setState({len:this.state.len-1})
     }
 
     onListItem(s){
         this.setState({choosevalue:s})
     }
     onAddTodoItem(newItem){
+        newItem.id = this.state.len+1
         let newData = this.state.data.concat(newItem)//?concat作用:连接数组，也可以在数组后添加数据，所以对于data是增量更新数据
         this.setState({data:newData})//setState后会重新绘制
         //alert(JSON.stringify(this.state.data))//data数据没变，难道是异步的？在AppList中变了
+        this.setState({len:this.state.len+1})
     }
     //AppForm的addTodoItem方法从form传值出来给onAddTodoItem
     //onAddTodoItem处理完再更新state中的data
